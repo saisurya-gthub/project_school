@@ -1,17 +1,17 @@
 from fastapi import APIRouter
-router = APIRouter()
+router_project = APIRouter()
 
-@router.post("/projects")
+@router_project.post("/projects")
 def create_project():
     return {
         "message" : "Project created successfully"
     }
-@router.get("/projects")
+@router_project.get("/projects")
 def get_projects():
     return {
         "message" : "List of projects"
     }
-@router.get("/projects/test")
+@router_project.get("/projects/test")
 def test() : {
     "status" : "project Router not Working"
 }

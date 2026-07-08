@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.routes.project import router as project_router
+from app.routes.project import router_project as project_router
+from app.routes.auth import router_auth as authentication_router
 
 app = FastAPI()
 
@@ -13,4 +14,11 @@ app.include_router(
     project_router,
     prefix="/projects",
     tags=["Projects"]
+)
+
+
+app.include_router(
+    authentication_router,
+    prefix = "/auth",
+    tags=["Authentication"]
 )
