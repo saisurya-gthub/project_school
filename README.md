@@ -5,16 +5,16 @@ The College Project Repository System is a full-stack web application designed t
 The platform enables students to explore previous projects using advanced search and filtering options, helping them gain inspiration, avoid duplicate ideas, and learn from existing work. Faculty members can verify submissions, monitor project progress, and maintain a structured repository of academic projects across different departments and technologies.
 
 ## ✨ Key Features
-🔐 Secure authentication with role-based access (Student & Faculty)
-📤 Upload project details, reports (PDF), GitHub repository links, and project images
-🔍 Search and filter projects by title, technology, department, year, and category
-👨‍🎓 Student dashboard for managing uploaded projects
-👨‍🏫 Faculty dashboard for reviewing and organizing submissions
-⭐ Featured and trending projects
-📱 Responsive user interface for desktop and mobile devices
-⚡ Fast REST API integration with real-time data
-🗂️ Centralized repository for academic project management
-🛠️ Tech Stack
+- 🔐 Secure authentication with role-based access (Student & Faculty)
+- 📤 Upload project details, reports (PDF), GitHub repository links, and project images
+- 🔍 Search and filter projects by title, technology, department, year, and category
+- 👨‍🎓 Student dashboard for managing uploaded projects
+- 👨‍🏫 Faculty dashboard for reviewing and organizing submissions
+- ⭐ Featured and trending projects
+- 📱 Responsive user interface for desktop and mobile devices
+- ⚡ Fast REST API integration with real-time data
+- 🗂️ Centralized repository for academic project management
+- 🛠️ Tech Stack
 
 ## Frontend
 
