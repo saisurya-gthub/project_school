@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.routes.project import router_project as project_router
 from app.routes.auth import router_auth as authentication_router
 
@@ -16,9 +17,18 @@ app.include_router(
     tags=["Projects"]
 )
 
-
 app.include_router(
     authentication_router,
-    prefix = "/auth",
+    prefix="/auth",
     tags=["Authentication"]
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
