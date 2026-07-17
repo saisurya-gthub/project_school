@@ -3,9 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes.project import router_project as project_router
 from app.routes.auth import router_auth as authentication_router
 from fastapi.staticfiles import StaticFiles
+from app.database.database import Base, engine
+from app.models.user import User
+from app.models.project import Project
 import os
 
 app = FastAPI()
+Base.metadata.create_all(bind=engine)
+
 os.makedirs("uploads", exist_ok=True)
 
 app.mount(
