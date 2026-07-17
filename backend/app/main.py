@@ -2,8 +2,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.project import router_project as project_router
 from app.routes.auth import router_auth as authentication_router
+from fastapi.staticfiles import StaticFiles
+import os
 
 app = FastAPI()
+os.makedirs("uploads", exist_ok=True)
+
+app.mount(
+    "/uploads",
+    StaticFiles(directory="uploads"),
+    name="uploads",
+)
 
 @app.get("/")
 def home():

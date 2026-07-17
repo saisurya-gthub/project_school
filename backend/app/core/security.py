@@ -2,14 +2,11 @@ from datetime import datetime, timedelta
 from jose import jwt
 from passlib.context import CryptContext
 
-# Secret key used to sign JWT tokens
-SECRET_KEY = "project_school_secret_key"
-
-# Algorithm used for signing
-ALGORITHM = "HS256"
-
-# Token expiry time
-ACCESS_TOKEN_EXPIRE_MINUTES = 60
+from app.core.config import (
+    SECRET_KEY,
+    ALGORITHM,
+    ACCESS_TOKEN_EXPIRE_MINUTES,
+)
 
 # Password hashing context
 pwd_context = CryptContext(

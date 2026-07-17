@@ -8,4 +8,7 @@ ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = os.getenv(
+    "UPLOAD_FOLDER",
+    "uploads"
+)
