@@ -56,7 +56,18 @@ export default function DashboardPage() {
           <Card padding="none">
             <div className="flex items-center justify-between px-6 py-4 border-b border-surface-100">
               <h2 className="text-base font-semibold text-surface-900">Recent Projects</h2>
-              <Button variant="ghost" size="sm" onClick={() => navigate("/projects")} rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  if (user?.role === "student") {
+                    navigate("/student/projects");
+                  } else if (user?.role === "faculty") {
+                    navigate("/faculty/review");
+                  }
+                }}
+                rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}
+              >
                 View all
               </Button>
             </div>

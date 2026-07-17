@@ -9,6 +9,9 @@ import {
   TrendingUp,
   Calendar,
   AlertCircle,
+  ArrowUpRight,
+  FolderOpen,
+  ExternalLink,
 } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -58,6 +61,8 @@ export default function FacultyDashboardPage() {
     (p) => p.status === "Rejected"
   ).length;
 
+  const recentProjects = projects.slice(0, 5);
+
   const stats = [
     {
       label: "Pending Review",
@@ -89,49 +94,69 @@ export default function FacultyDashboardPage() {
     },
   ];
 
+  const statusVariant = (
+      status: string
+  ): "success" | "warning" | "danger" | "default" => {
+
+      switch (status.toLowerCase()) {
+
+          case "approved":
+              return "success";
+
+          case "pending":
+              return "warning";
+
+          case "rejected":
+              return "danger";
+
+          default:
+              return "default";
+      }
+  };
+
   const handleAction = async () => {
-  if (!selectedProject || !actionType) return;
+    if (!selectedProject || !actionType) return;
 
-  try {
-    setActionLoading(true);
+    try {
+      setActionLoading(true);
 
-    await projectService.updateStatus(
-      selectedProject.id,
-      actionType === "approve"
-        ? "Approved"
-        : "Rejected"
-    );
-
-    const updatedProjects =
-      await projectService.getAllProjects()
-
-    setProjects(updatedProjects);
-
-    toast.success(
-      `Project ${
+      await projectService.updateStatus(
+        selectedProject.id,
         actionType === "approve"
-          ? "approved"
-          : "rejected"
-      } successfully!`
-    );
+          ? "Approved"
+          : "Rejected"
+      );
 
-    setSelectedProject(null);
-    setActionType(null);
+      const updatedProjects =
+        await projectService.getAllProjects()
 
-  } catch (err) {
+      setProjects(updatedProjects);
 
-    console.error(err);
+      toast.success(
+        `Project ${
+          actionType === "approve"
+            ? "approved"
+            : "rejected"
+        } successfully!`
+      );
 
-    toast.error(
-      "Failed to update project status."
-    );
+      setSelectedProject(null);
+      setActionType(null);
 
-  } finally {
+    } catch (err) {
 
-    setActionLoading(false);
+      console.error(err);
 
-  }
-};
+      toast.error(
+        "Failed to update project status."
+      );
+
+    } finally {
+
+      setActionLoading(false);
+
+    }
+  };
 
   const columns: Column<Project>[] = [
   {
@@ -290,21 +315,87 @@ console.log("Projects state:", projects);
       )}
 
       {/* Projects Table */}
-      <Card padding="none">
-        <div className="px-6 py-4 border-b border-surface-100 flex items-center justify-between">
-          <h2 className="text-base font-semibold text-surface-900">Project Submissions</h2>
-          <Badge variant="primary">{projects.length} Total</Badge>
-        </div>
-        <div className="space-y-3">
-          {projects.map((project) => (
-            <div key={project.id} className="border rounded p-4">
-              <h3>{project.title}</h3>
-              <p>{project.department}</p>
-              <p>{project.status}</p>
+      <div className="lg:col-span-2">
+          <Card padding="none">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-surface-100">
+              <h2 className="text-base font-semibold text-surface-900">Recent Reviews</h2>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/faculty/review")}
+                rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}
+              >
+                View all
+              </Button>
             </div>
-          ))}
+
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-surface-100 bg-surface-50/50">
+                    <th className="px-6 py-3 text-left text-xs font-semibold text-surface-500 uppercase">
+                      Project
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-semibold text-surface-500 uppercase hidden sm:table-cell">
+                      Department
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-semibold text-surface-500 uppercase">
+                      Status
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-semibold text-surface-500 uppercase hidden md:table-cell">
+                      Date
+                    </th>
+                    <th className="px-6 py-3 text-right text-xs font-semibold text-surface-500 uppercase">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-surface-100">
+                  {recentProjects.map((project) => (
+                    <tr key={project.id} className="hover:bg-surface-50 transition-colors">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden bg-surface-100">
+                            <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center">
+                                <FolderOpen className="h-5 w-5 text-primary-600" />
+                            </div>
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-sm font-medium text-surface-900 truncate max-w-[200px]">
+                              {project.title}
+                            </p>
+                            <p className="text-xs text-surface-500">{project.guide_name}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 hidden sm:table-cell">
+                        <span className="text-sm text-surface-600">{project.department}</span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <Badge variant={statusVariant(project.status)}>
+                          {project.status}
+                        </Badge>
+                      </td>
+                      <td className="px-6 py-4 hidden md:table-cell">
+                        <span className="text-sm text-surface-500">{project.year}</span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => navigate(`/student/projects/${project.id}`)}
+                          leftIcon={<ExternalLink className="h-3.5 w-3.5" />}
+                        >
+                          View
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Card>
         </div>
-      </Card>
 
       {/* Confirm Modal */}
       <ConfirmModal

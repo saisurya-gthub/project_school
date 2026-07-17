@@ -42,10 +42,7 @@ router_project = APIRouter()
 # -----------------------------
 # Upload Project (Student Only)
 # -----------------------------
-@router_project.post(
-    "/upload",
-    response_model=ProjectResponse
-)
+@router_project.post("/upload",response_model=ProjectResponse)
 def upload_project(
     project: ProjectCreate,
     db: Session = Depends(get_db),

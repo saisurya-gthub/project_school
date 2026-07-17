@@ -79,12 +79,22 @@ export default function RegisterPage() {
         </div>
 
         <div className="relative flex flex-col justify-between p-12 text-white w-full">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm">
-              <BookOpen className="h-5 w-5" />
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-20 h-20 rounded-xl bg-white/10 backdrop-blur-sm">
+                  <BookOpen className="h-10 w-10" />
+                </div>
+
+                <span className="-mt-5 text-4xl font-bold">
+                  {APP_NAME}
+                </span>
+              </div>
+
+              {/* Tagline */}
+              <p className="-mt-5 ml-28 text-primary-200 text-sm">
+                Store the best, Inspire the rest
+              </p>
             </div>
-            <span className="text-xl font-bold">{APP_NAME}</span>
-          </div>
 
           <div>
             <h1 className="text-4xl font-bold leading-tight">
@@ -100,7 +110,6 @@ export default function RegisterPage() {
           </div>
 
           <div className="text-primary-200 text-sm">
-            Already have an account? Sign in to continue.
           </div>
         </div>
       </div>

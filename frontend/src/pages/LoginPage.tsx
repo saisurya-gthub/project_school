@@ -74,24 +74,48 @@ export default function LoginPage() {
     <div className="min-h-screen flex">
       {/* Left panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 relative overflow-hidden">
-      
-        <div className="relative flex flex-col justify-centers p-12 text-white w-full">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm">
-              <BookOpen className="h-5 w-5" />
+
+        <div className="relative flex flex-col h-full w-full p-12 text-white">
+
+          {/* Top Logo */}
+          <div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-20 h-20 rounded-xl bg-white/10 backdrop-blur-sm">
+                <BookOpen className="h-10 w-10" />
+              </div>
+
+              <span className="-mt-5 text-4xl font-bold">
+                {APP_NAME}
+              </span>
             </div>
-            <span className="text-xl font-bold">{APP_NAME}</span>
-          </div>
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold leading-tight">
-              College Project<br />
-              Repository System
-            </h1>
-            <p className="text-primary-200 text-lg max-w-md leading-relaxed">
-              A centralized platform for students and faculty to share, discover, and collaborate on academic projects.
+
+            {/* Tagline */}
+            <p className="-mt-5 ml-28 text-primary-200 text-sm">
+              Store the best, Inspire the rest
             </p>
           </div>
+
+          {/* Center Content */}
+          <div className="flex-1 flex items-center">
+
+            <div className="space-y-6">
+              <h1 className="text-4xl font-bold leading-tight">
+                College Project
+                <br />
+                Repository System
+              </h1>
+
+              <p className="text-primary-200 text-lg max-w-md leading-relaxed">
+                A centralized platform for students and faculty to
+                share, discover, and collaborate on academic
+                projects.
+              </p>
+            </div>
+
+          </div>
+
         </div>
+
       </div>
 
       {/* Right panel - Login Form */}

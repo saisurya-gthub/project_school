@@ -207,11 +207,11 @@ export default function ProjectForm({
         <div className="space-y-5">
           <Input
             label="Project Title *"
-            placeholder="Enter a descriptive title for your project"
+            placeholder="Enter a descriptive title for your project (minimum 5 characters)..."
             error={errors.title?.message}
             {...register("title", {
               required: "Project title is required",
-              minLength: { value: 10, message: "Title must be at least 10 characters" },
+              minLength: { value: 5, message: "Title must be at least 10 characters" },
             })}
           />
 

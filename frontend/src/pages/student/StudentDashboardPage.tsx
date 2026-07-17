@@ -173,7 +173,7 @@ export default function StudentDashboardPage() {
           <Button
             variant="outline"
             leftIcon={<Search className="h-4 w-4" />}
-            onClick={() => navigate("/student/browse")}
+            onClick={() => navigate("/browse")}
           >
             Browse Projects
           </Button>
@@ -311,7 +311,7 @@ export default function StudentDashboardPage() {
                 className="w-full justify-start"
                 size="lg"
                 leftIcon={<Search className="h-5 w-5" />}
-                onClick={() => navigate("/student/browse")}
+                onClick={() => navigate("/browse")}
               >
                 Browse Projects
               </Button>
