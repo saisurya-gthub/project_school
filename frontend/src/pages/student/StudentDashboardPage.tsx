@@ -216,7 +216,7 @@ export default function StudentDashboardPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => navigate("/student/browse")}
+                onClick={() => navigate("/student/projects")}
                 rightIcon={<ArrowUpRight className="h-3.5 w-3.5" />}
               >
                 View all

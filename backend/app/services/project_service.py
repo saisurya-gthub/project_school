@@ -91,10 +91,9 @@ def get_all_my_projects(
     projects = (
         db.query(Project)
         .filter(Project.student_id == current_user.id)
-        .filter(Project.status == "Approved")
         .all()
     )
-    
+
     return projects
 
 #get all projects 

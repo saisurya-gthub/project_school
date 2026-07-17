@@ -23,15 +23,15 @@ interface SidebarProps {
 }
 
 const mainNavItems = [
-  { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", roles: ["student", "faculty", "admin"] },
-  { to: "/projects", icon: FolderSearch, label: "Browse Projects", roles: ["student", "faculty", "admin"] },
-  { to: "/profile", icon: User, label: "Profile", roles: ["student", "faculty", "admin"] },
+  { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", roles: ["student", "faculty"] },
+  { to: "/browse", icon: FolderSearch, label: "Browse Projects", roles: ["student", "faculty"] },
+  { to: "/profile", icon: User, label: "Profile", roles: ["student", "faculty"] },
 ];
 
 const studentNavItems = [
   { to: "/student/dashboard", icon: Home, label: "My Dashboard", roles: ["student"] },
   { to: "/student/upload", icon: Upload, label: "Submit Project", roles: ["student"] },
-  { to: "/student/browse", icon: FolderSearch, label: "All Projects", roles: ["student", "faculty", "admin"] },
+  { to: "/student/projects", icon: FolderSearch, label: "All Projects", roles: ["student", "faculty", "admin"] },
 ];
 
 const facultyNavItems = [
