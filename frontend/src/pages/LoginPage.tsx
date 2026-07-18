@@ -43,6 +43,13 @@ export default function LoginPage() {
     password: data.password,
   });
 
+  console.log("Login successful");
+  console.log("User:", loggedInUser);
+  console.log("Token:", localStorage.getItem("token"));
+  console.log("Stored User:", localStorage.getItem("user"));
+
+  navigate("/student/dashboard");
+
   toast.success("Welcome back! Login successful.");
 
   switch (loggedInUser.role.toLowerCase()) {
